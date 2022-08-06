@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['kobobsapi.herukoapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'kobobsapi.apps.KobobsapiConfig',
     'django.contrib.admin',
     'django.contrib.auth',

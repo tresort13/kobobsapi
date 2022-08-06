@@ -46,5 +46,5 @@ class RegisterAPI(generics.GenericAPIView):
         })
         
 def welcom(request):
-    return HttpResponse('WELCOM TO CONGO AIRWAYS API RESOURCES')
+    return HttpResponse('WELCOM TO KOBO BUSINESS  API RESOURCES')
 

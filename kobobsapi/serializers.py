@@ -1,4 +1,4 @@
-from back_end.kobobs.kobobsapi.models import Envoies_data
+from .models import Envoies_data
 from rest_framework import serializers
 from django.contrib.auth.models import User
 

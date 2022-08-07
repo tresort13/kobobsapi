@@ -65,7 +65,9 @@ def envoieFormulaire(request):
         adresse_beneficiaire= request.data['adresse_beneficiaire']
         numero_beneficiaire= request.data['numero_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
-        montant_envoi= request.data['montant_envoie']
+        montant_envoie = request.data['montant_envoie']
+        montant_device= request.data['montant_device']
+        type_service= request.data['type_service']
         
         retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]
         key_one = random.sample(retrait_donnes1,k=1)
@@ -113,7 +115,7 @@ def envoieFormulaire(request):
         
         montant_total = montant_envoi_convert + frais_envoie
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiare' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie' :  montant_envoi, 'frais_envoie' : frais_envoie,'montant_total' : montant_total,'code_retrait' : code_retrait,'code_abonne' : code_abonne})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiare' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie' : montant_envoie,'montant_device' : montant_device,'type_service' : type_service, 'frais_envoie' : frais_envoie,'montant_total' : montant_total,'code_retrait' : code_retrait,'code_abonne' : code_abonne})
         if serializer.is_valid() :
           serializer.save()
           return Response('formulaire saved successfully')

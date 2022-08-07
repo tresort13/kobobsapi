@@ -28,7 +28,7 @@ class Envoies_dataSerializer(serializers.ModelSerializer):
         model = Envoies_data
         fields = ('id', 'nom_expediteur','postnom_expediteur','prenom_expediteur','email_expediteur','numero_expediteur','pays_expediteur',
                   'nom_beneficiare','postnom_beneficiare','prenom_beneficiare','adresse_beneficiare','numero_beneficiare','pays_beneficiare',
-                  'montant_envoie','frais_envoie','montant_total','code_retrait','data_operation','date_heure_operation','code_abonne','status_retrait',
+                  'montant_envoie','montant_device','type_service','frais_envoie','montant_total','code_retrait','data_operation','date_heure_operation','code_abonne','status_retrait',
                   'agent_id')
 
 

@@ -52,7 +52,6 @@ def welcom(request):
 
 @api_view(['POST'])   
 def envoieFormulaire(request): 
-        fichier = request.data['fichier']
         nom_expediteur= request.data['nom_expediteur']
         postnom_expediteur= request.data['postnom_expediteur']
         prenom_expediteur= request.data['prenom_expediteur']
@@ -109,7 +108,7 @@ def envoieFormulaire(request):
             
         code_abonne = e+f+g+h
         
-        montant_envoi_convert = int(montant_envoi)
+        montant_envoi_convert = int(montant_envoie)
         
         frais_envoie = (montant_envoi_convert * 5) / 100
         

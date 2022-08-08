@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-id1-rny+3p=86vo4)*fo5*5ezo*i0c+b-34pdqw-0e=pi#a_y@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://kobobsapi.herokuapp.com']
 

@@ -1,8 +1,4 @@
 
-from email import message
-from functools import partial
-from ntpath import join
-from urllib import response
 
 from django.http import HttpResponse
 from .models import Envoies_data
@@ -18,7 +14,6 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 import re
 from rest_framework.views import APIView
-from datetime import date
 from rest_framework.permissions import IsAuthenticated
 import random
 
@@ -50,8 +45,8 @@ class RegisterAPI(generics.GenericAPIView):
 def welcom(request):
     return HttpResponse('WELCOM TO KOBO BUSINESS  API RESOURCES')
 
-@api_view(['POST'])   
-def envoieFormulaire(request): 
+class EnvoieFormulaire(APIView):   
+    def post(self, request, *args, **kwargs): 
         nom_expediteur= request.data['nom_expediteur']
         postnom_expediteur= request.data['postnom_expediteur']
         prenom_expediteur= request.data['prenom_expediteur']

@@ -15,7 +15,7 @@ class Envoies_data(models.Model):
     nom_beneficiaire = models.CharField(max_length=100,default="")
     postnom_beneficiaire = models.CharField(max_length=100,default="")
     prenom_beneficiaire = models.CharField(max_length=100,default="")
-    adresse_beneficiare = models.CharField(max_length=100,default="")
+    adresse_beneficiaire = models.CharField(max_length=100,default="")
     numero_beneficiaire = models.CharField(max_length=100,default="")
     pays_beneficiaire = models.CharField(max_length=100,default="")
     montant_envoie = models.DecimalField(max_digits=15, decimal_places=2)

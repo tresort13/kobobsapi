@@ -115,3 +115,15 @@ def envoieFormulaire(request):
           return Response(serializer.data)
         return Response('',status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])   
+def getRetraitInfo(request,pk): 
+    code_retrait = pk
+    try:
+        envoies_data = Envoies_data.objects.filter(date_envoie =code_retrait)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='GET':
+            serializer = Envoies_dataSerializer(envoies_data)
+            return Response(serializer.data)
+        

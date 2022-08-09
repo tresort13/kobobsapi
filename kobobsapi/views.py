@@ -45,8 +45,8 @@ class RegisterAPI(generics.GenericAPIView):
 def welcom(request):
     return HttpResponse('WELCOM TO KOBO BUSINESS  API RESOURCES')
 
-class EnvoieFormulaire(APIView):   
-    def post(self, request, *args, **kwargs): 
+@api_view(['POST'])   
+def envoieFormulaire(request): 
         nom_expediteur= request.data['nom_expediteur']
         postnom_expediteur= request.data['postnom_expediteur']
         prenom_expediteur= request.data['prenom_expediteur']
@@ -112,6 +112,6 @@ class EnvoieFormulaire(APIView):
         serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie' : montant_envoie,'montant_device' : montant_device,'type_service' : type_service, 'frais_envoie' : frais_envoie,'montant_total' : montant_total,'code_retrait' : code_retrait,'code_abonne' : code_abonne})
         if serializer.is_valid() :
           serializer.save()
-          return Response("ok you're right")
+          return Response(serializer.data)
         return Response('',status=status.HTTP_400_BAD_REQUEST)
 

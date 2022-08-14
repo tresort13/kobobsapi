@@ -10,19 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='envoies_data',
-            name='frais_tva',
-            field=models.DecimalField(decimal_places=2, default=0.0, max_digits=15),
-        ),
-        migrations.AlterField(
-            model_name='envoies_data',
-            name='montant_beneficiaire',
-            field=models.DecimalField(decimal_places=2, default=0.0, max_digits=15),
-        ),
-        migrations.AlterField(
-            model_name='envoies_data',
-            name='montant_envoie_sans_frais',
-            field=models.DecimalField(decimal_places=2, default=0.0, max_digits=15),
-        ),
     ]

@@ -119,11 +119,11 @@ def envoieFormulaire(request):
 def getRetraitInfo(request,pk): 
     code_retrait = pk
     try:
-        envoies_data = Envoies_data.objects.filter(code_retrait =code_retrait)
+        envoies_data = Envoies_data.objects.filter(code_retrait=code_retrait)
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         
     if request.method =='GET':
-            serializer = Envoies_dataSerializer(envoies_data)
+            serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
         

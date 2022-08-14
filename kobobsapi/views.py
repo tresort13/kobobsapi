@@ -60,7 +60,7 @@ def envoieFormulaire(request):
         adresse_beneficiaire= request.data['adresse_beneficiaire']
         numero_beneficiaire= request.data['numero_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
-        montant_envoie = request.data['montant_envoie']
+        montant_envoie = request.data['montant_beneficiaire']
         type_service= request.data['type_service']
         
         retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]

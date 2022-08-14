@@ -124,6 +124,6 @@ def getRetraitInfo(request,pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
         
     if request.method =='GET':
-            serializer = Envoies_dataSerializer(envoies_data)
-            return Response(serializer.data)
+            # serializer = Envoies_dataSerializer(envoies_data)
+            return Response(envoies_data)
         

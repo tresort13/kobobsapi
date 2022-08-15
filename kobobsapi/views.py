@@ -103,7 +103,7 @@ def envoieFormulaire(request):
             
         code_abonne = e+f+g+h
         
-        montant_envoi_convert = int(montant_envoie)
+        montant_envoi_convert = montant_envoie
         
         montant_envoi_convert_sterling = montant_envoi_convert * 0.84
         

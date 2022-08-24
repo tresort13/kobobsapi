@@ -105,7 +105,7 @@ def envoieFormulaire(request):
         
         montant_envoi_convert = montant_envoie
         
-        montant_envoi_convert_sterling = montant_envoi_convert * 0.84
+        montant_envoi_convert_sterling = float(montant_envoi_convert) * 0.84
         
         frais_envoie = (montant_envoi_convert_sterling * 5) / 100
         
@@ -133,7 +133,7 @@ def getRetraitInfo(request,pk):
         
 @api_view(['GET'])   
 def getRetraitNonValideInfo(request,pk): 
-    status_retrait = pk
+    status_retrait = str(pk)
     try:
         envoies_data = Envoies_data.objects.filter(status_retrait=status_retrait)
     except envoies_data.DoesNotExist:

@@ -154,5 +154,8 @@ def validateCodeRetrait(request,pk):
         
     if request.method =='PUT':
             serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait': "valide"},partial=True)
-            return Response(serializer.data)
+            if serializer.is_valid() :
+              serializer.save()
+              return Response(serializer.data)
+            return Response('',status=status.HTTP_400_BAD_REQUEST)
         

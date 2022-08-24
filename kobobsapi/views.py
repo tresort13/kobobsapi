@@ -132,6 +132,8 @@ def getRetraitInfo(request,pk):
             serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
         
+        
+        
 @api_view(['GET'])   
 def getRetraitNonValideInfo(request,pk): 
     status_retrait = str(pk)
@@ -143,6 +145,9 @@ def getRetraitNonValideInfo(request,pk):
     if request.method =='GET':
             serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
+        
+        
+        
 
 @api_view(['PUT'])   
 def validateCodeRetrait(request,pk): 
@@ -153,7 +158,7 @@ def validateCodeRetrait(request,pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
         
     if request.method =='PUT':
-            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':'valide'},partial=True)
+            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':'Code Retrait Valide'},partial=True)
             if serializer.is_valid() :
               serializer.save()
               return Response(serializer.data)

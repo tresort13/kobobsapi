@@ -153,7 +153,7 @@ def getRetraitNonValideInfo(request,pk):
 @api_view(['PUT'])   
 def validateCodeRetrait(request,pk): 
     code_retrait = pk
-    status_retrait = request.data['statusRetrait']
+    status_retrait = request.data
     try:
         envoies_data = Envoies_data.objects.get(code_retrait=code_retrait)
     except envoies_data.DoesNotExist:

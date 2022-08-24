@@ -1,6 +1,7 @@
 
 
 from functools import partial
+from pickle import PUT
 from django.http import HttpResponse
 from .models import Envoies_data
 from rest_framework import status
@@ -152,13 +153,14 @@ def getRetraitNonValideInfo(request,pk):
 @api_view(['PUT'])   
 def validateCodeRetrait(request,pk): 
     code_retrait = pk
+    status_retrait = request.data['statusRetrait']
     try:
         envoies_data = Envoies_data.objects.get(code_retrait=code_retrait)
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         
     if request.method =='PUT':
-            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':'Code Retrait Valide'},partial=True)
+            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':status_retrait},partial=True)
             if serializer.is_valid() :
               serializer.save()
               return Response(serializer.data)

@@ -153,7 +153,7 @@ def validateCodeRetrait(request,pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
         
     if request.method =='PUT':
-            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':request.data},partial=True)
+            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':'valide'},partial=True)
             if serializer.is_valid() :
               serializer.save()
               return Response(serializer.data)

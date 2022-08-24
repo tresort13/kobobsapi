@@ -1,5 +1,6 @@
 
 
+from functools import partial
 from django.http import HttpResponse
 from .models import Envoies_data
 from rest_framework import status
@@ -141,5 +142,17 @@ def getRetraitNonValideInfo(request,pk):
         
     if request.method =='GET':
             serializer = Envoies_dataSerializer(envoies_data,many=True)
+            return Response(serializer.data)
+
+@api_view(['PUT'])   
+def validateCodeRetrait(request,pk): 
+    code_retrait = pk
+    try:
+        envoies_data = Envoies_data.objects.filter(code_retrait=code_retrait)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='PUT':
+            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait': "valide"},partial=True)
             return Response(serializer.data)
         

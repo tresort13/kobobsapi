@@ -13,7 +13,8 @@ urlpatterns = [
     path('api/register/',RegisterAPI.as_view(), name='register'),
     path('api/envoieFormulaire/',views.envoieFormulaire,name='envoieFormulaire'),
     path('api/getRetraitInfo/<int:pk>/',views.getRetraitInfo,name='getRetraitInfo'),
-    path('api/getRetraitNonValideInfo/<str:pk>/',views.getRetraitNonValideInfo,name='getRetraitNonValideInfo')
+    path('api/getRetraitNonValideInfo/<str:pk>/',views.getRetraitNonValideInfo,name='getRetraitNonValideInfo'),
+    path('api/validateCodeRetrait/<int:pk>/',views.validateCodeRetrait,name='validateCodeRetrait')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

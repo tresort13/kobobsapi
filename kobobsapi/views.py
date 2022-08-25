@@ -165,3 +165,19 @@ def validateCodeRetrait(request,pk):
               return Response(serializer.data)
             return Response('',status=status.HTTP_400_BAD_REQUEST)
         
+@api_view(['PUT'])   
+def payerCodeRetrait(request,pk): 
+    code_retrait = pk
+    try:
+        envoies_data = Envoies_data.objects.get(code_retrait=code_retrait)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='PUT':
+            serializer = Envoies_dataSerializer(envoies_data,data={'status_retrait':'Code Retrait Payé'},partial=True)
+            if serializer.is_valid() :
+              serializer.save()
+              return Response(serializer.data)
+            return Response('',status=status.HTTP_400_BAD_REQUEST)
+        
+        

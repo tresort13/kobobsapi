@@ -80,7 +80,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kobobs.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://kobobs.herokuapp.com"
+    "https://kobobs.herokuapp.com",
+    "https://kobobs-clients-services.herokuapp.com"
 ]
 
 

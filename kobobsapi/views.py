@@ -183,9 +183,9 @@ def payerCodeRetrait(request,pk):
         
 @api_view(['GET'])   
 def getCodeAbonneInfo(request,pk): 
-    code_retrait = pk
+    code_abonne = pk
     try:
-        envoies_data = Envoies_data.objects.filter(code_retrait=code_retrait)
+        envoies_data = Envoies_data.objects.filter(code_abonne=code_abonne)
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         

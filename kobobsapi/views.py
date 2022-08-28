@@ -192,3 +192,19 @@ def getCodeAbonneInfo(request,pk):
     if request.method =='GET':
             serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
+        
+@api_view(['GET'])   
+def getAbonneInfo(request,pk): 
+    numero_expediteur = pk
+    try:
+        envoies_data = Envoies_data.objects.filter(numero_expediteur=numero_expediteur)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='GET':
+            serializer = Envoies_dataSerializer(envoies_data,many=True)
+            return Response(serializer.data)
+        
+        
+
+

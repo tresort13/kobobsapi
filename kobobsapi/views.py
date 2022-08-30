@@ -197,7 +197,7 @@ def getCodeAbonneInfo(request,pk):
 def getAbonneInfo(request,pk): 
     numero_expediteur = pk
     try:
-        envoies_data = Envoies_data.objects.filter(numero_expediteur=numero_expediteur)
+        envoies_data = Envoies_data.objects.filter(code_abonne=numero_expediteur)
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         

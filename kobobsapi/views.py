@@ -122,7 +122,7 @@ def envoieFormulaire(request):
         return Response('',status=status.HTTP_400_BAD_REQUEST)
     
     
-@api_view(['POST'])   
+@api_view(['POST','GET'])   
 def envoieFormulaireAbonne(request): 
         nom_expediteur= request.data['nom_expediteur']
         postnom_expediteur= request.data['postnom_expediteur']

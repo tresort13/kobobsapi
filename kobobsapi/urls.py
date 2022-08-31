@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import RegisterAPI
 from knox import views as knox_views
-from .views import LoginAPI,EnvoieFormulaireAbonne
+from .views import LoginAPI
 from .import views
 
 urlpatterns = [

@@ -172,10 +172,12 @@ def envoieFormulaireAbonne(request,pk):
         
         montant_total = montant_envoi_convert_sterling + frais_envoie
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie_sans_frais':montant_envoi_convert_sterling,'montant_beneficiaire':montant_envoi_convert,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne':pk})
-        if serializer.is_valid() :
-          serializer.save()
-          return Response(serializer.data)
+        if request.method =='POST':
+        
+         serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie_sans_frais':montant_envoi_convert_sterling,'montant_beneficiaire':montant_envoi_convert,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne':pk})
+         if serializer.is_valid() :
+           serializer.save()
+           return Response(serializer.data)
         return Response('',status=status.HTTP_400_BAD_REQUEST)
 
 

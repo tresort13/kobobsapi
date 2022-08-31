@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import RegisterAPI
 from knox import views as knox_views
-from .views import LoginAPI
+from .views import LoginAPI,EnvoieFormulaireAbonne
 from .import views
 
 urlpatterns = [
@@ -12,7 +12,7 @@ urlpatterns = [
     path('api/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
     path('api/register/',RegisterAPI.as_view(), name='register'),
     path('api/envoieFormulaire/',views.envoieFormulaire,name='envoieFormulaire'),
-    path('api/envoieFormulaireAbonne/<str:pk>/',views.envoieFormulaireAbonne,name='envoieFormulaireAbonne'),
+    path('api/envoieFormulaireAbonne',EnvoieFormulaireAbonne.as_view(),name='envoieFormulaireAbonne'),
     path('api/getRetraitInfo/<int:pk>/',views.getRetraitInfo,name='getRetraitInfo'),
     path('api/getRetraitNonValideInfo/<str:pk>/',views.getRetraitNonValideInfo,name='getRetraitNonValideInfo'),
     path('api/validateCodeRetrait/<int:pk>/',views.validateCodeRetrait,name='validateCodeRetrait'),

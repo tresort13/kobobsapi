@@ -1,5 +1,4 @@
-
-
+import requests
 from functools import partial
 from pickle import PUT
 from django.http import HttpResponse
@@ -18,7 +17,7 @@ import re
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 import random
-import requests
+
 
 
 

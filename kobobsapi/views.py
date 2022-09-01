@@ -62,6 +62,7 @@ def envoieFormulaire(request):
         adresse_beneficiaire= request.data['adresse_beneficiaire']
         numero_beneficiaire= request.data['numero_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
+        montant_beneficiaire= request.data['montant_beneficiaire']
         montant_envoie = request.data['montant_pour_payer']
         type_service= request.data['type_service']
         
@@ -115,12 +116,12 @@ def envoieFormulaire(request):
         
         frais_tva = (montant_envoi_convert_sterling * 1) / 100
         
-        montant_total = montant_envoi_convert_sterling + frais_envoie
+        montant_total = montant_envoi_convert_sterling + frais_envoie + frais_tva
         
        
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie_sans_frais':montant_envoi_convert_sterling,'montant_beneficiaire':montant_envoi_convert,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie_sans_frais':montant_envoi_convert_sterling,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)

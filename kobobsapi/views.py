@@ -62,7 +62,7 @@ def envoieFormulaire(request):
         adresse_beneficiaire= request.data['adresse_beneficiaire']
         numero_beneficiaire= request.data['numero_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
-        montant_envoie = request.data['montant_beneficiaire']
+        montant_envoie = request.data['montant_pour_payer']
         type_service= request.data['type_service']
         
         retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]
@@ -109,7 +109,7 @@ def envoieFormulaire(request):
         
         
         
-        montant_envoi_convert_sterling = float(montant_envoi_convert) * 0.84
+        montant_envoi_convert_sterling = float(montant_envoi_convert)
         
         frais_envoie = (montant_envoi_convert_sterling * 5) / 100
         

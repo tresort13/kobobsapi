@@ -15,7 +15,7 @@ from knox.views import LoginView as KnoxLoginView
 import re
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-import random,requests
+import random
 
 
 
@@ -107,11 +107,9 @@ def envoieFormulaire(request):
         
         montant_envoi_convert = montant_envoie
         
-        url = "https://openexchangerates.org/api/latest.json?app_id=[[app:41351d88e53f4f0c89785fba9fc60ca0]]&symbols=GBP"
         
-        demande = requests.get(url)
         
-        montant_envoi_convert_sterling = float(montant_envoi_convert) * demande.rates.GBP
+        montant_envoi_convert_sterling = float(montant_envoi_convert) * 0.84
         
         frais_envoie = (montant_envoi_convert_sterling * 5) / 100
         

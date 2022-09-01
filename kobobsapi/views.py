@@ -18,6 +18,8 @@ import re
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 import random
+import requests
+
 
 
 
@@ -107,13 +109,20 @@ def envoieFormulaire(request):
         
         montant_envoi_convert = montant_envoie
         
-        montant_envoi_convert_sterling = float(montant_envoi_convert) * 0.84
+        url = "https://openexchangerates.org/api/latest.json?app_id=[[app:41351d88e53f4f0c89785fba9fc60ca0]]&symbols=GBP"
+        
+        demande = requests.get(url)
+        
+        montant_envoi_convert_sterling = float(montant_envoi_convert) * demande.rates.GBP
         
         frais_envoie = (montant_envoi_convert_sterling * 5) / 100
         
         frais_tva = (montant_envoi_convert_sterling * 1) / 100
         
         montant_total = montant_envoi_convert_sterling + frais_envoie
+        
+       
+        
         
         serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_envoie_sans_frais':montant_envoi_convert_sterling,'montant_beneficiaire':montant_envoi_convert,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne})
         if serializer.is_valid() :

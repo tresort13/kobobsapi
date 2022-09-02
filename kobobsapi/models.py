@@ -19,7 +19,6 @@ class Envoies_data(models.Model):
     adresse_beneficiaire = models.CharField(max_length=100,default="")
     numero_beneficiaire = models.CharField(max_length=100,default="")
     pays_beneficiaire = models.CharField(max_length=100,default="")
-    montant_envoie_sans_frais = models.DecimalField(max_digits=15, decimal_places=2,default=0.00)
     montant_beneficiaire = models.DecimalField(max_digits=15, decimal_places=2,default=0.00)
     type_service = models.CharField(max_length=100,default="")  
     frais_envoie = models.DecimalField(max_digits=15,decimal_places=2)

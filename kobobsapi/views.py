@@ -64,8 +64,8 @@ def envoieFormulaire(request):
         pays_beneficiaire= request.data['pays_beneficiaire']
         montant_beneficiaire= request.data['montant_beneficiaire']
         montant_envoie = request.data['montant_pour_payer']
-        frais_envoie = request.data['montant_pour_payer']
-        frais_tva = request.data['montant_pour_payer']
+        frais_envoie = request.data['frais_envoie']
+        frais_tva = request.data['frais_tva']
         type_service= request.data['type_service']
         
         retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]

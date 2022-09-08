@@ -284,3 +284,16 @@ def getDailyRapportInfo(request,pk):
     if request.method =='GET':
             serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
+        
+@api_view(['GET'])   
+def getMonthlyRapportInfo(request,pk,pk2): 
+    month_operation = pk
+    year_operation = pk2
+    try:
+        envoies_data = Envoies_data.objects.filter(month_operation=month_operation) & Envoies_data.objects.filter(year_operation=year_operation)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='GET':
+            serializer = Envoies_dataSerializer(envoies_data,many=True)
+            return Response(serializer.data)

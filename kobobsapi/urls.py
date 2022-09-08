@@ -19,7 +19,8 @@ urlpatterns = [
     path('api/payerCodeRetrait/<int:pk>/',views.payerCodeRetrait,name='payerCodeRetrait'),
     path('api/getCodeAbonneInfo/<int:pk>/',views.getCodeAbonneInfo,name='getCodeAbonneInfo'),
     path('api/getAbonneInfo/<str:pk>/',views.getAbonneInfo,name='getAbonneInfo'),
-     path('api/getDailyRapportInfo/<str:pk>/',views.getDailyRapportInfo,name='getDailyRapportInfo')
+    path('api/getDailyRapportInfo/<str:pk>/',views.getDailyRapportInfo,name='getDailyRapportInfo'),
+    path('api/getMonthlyRapportInfo/<str:pk>/<str:pk2>/',views.getMonthlyRapportInfo,name='getMonthlyRapportInfo')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -16,6 +16,7 @@ import re
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 import random
+from datetime import datetime
 
 
 
@@ -119,7 +120,7 @@ def envoieFormulaire(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne,'month_year_operation':datetime.now().month +"-"+datetime.now().year})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)
@@ -180,7 +181,7 @@ def envoieFormulaireAbonne(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'adresse_beneficiaire' : adresse_beneficiaire,'numero_beneficiaire' : numero_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait,'month_year_operation':datetime.now().month +"-"+datetime.now().year})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)
@@ -286,11 +287,10 @@ def getDailyRapportInfo(request,pk):
             return Response(serializer.data)
         
 @api_view(['GET'])   
-def getMonthlyRapportInfo(request,pk,pk2): 
-    month_operation = pk
-    year_operation = pk2
+def getMonthlyRapportInfo(request,pk): 
+    month_year_operation = pk
     try:
-        envoies_data = Envoies_data.objects.filter(month_operation=month_operation) & Envoies_data.objects.filter(year_operation=year_operation)
+        envoies_data = Envoies_data.objects.filter(month_year_operation=month_year_operation)
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         

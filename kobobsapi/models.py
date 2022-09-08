@@ -29,7 +29,6 @@ class Envoies_data(models.Model):
     date_heure_operation =models.DateTimeField(auto_now_add=True)
     code_abonne = models.CharField(max_length=5, null=True)
     status_retrait = models.CharField(max_length=50,default="code retrait en attente de validation")
-    month_operation = models.CharField(max_length=5,default="") 
-    year_operation = models.CharField(max_length=5,default="") 
+    month_year_operation = models.CharField(max_length=10,default="") 
     agent_id = models.ForeignKey(User,default=1,on_delete=models.CASCADE)
     

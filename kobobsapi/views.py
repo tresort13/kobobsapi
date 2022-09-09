@@ -308,7 +308,7 @@ def getUsersInfo(request):
         
     if request.method =='GET':
             serializer = UserSerializer(envoies_data,many=True)
-            return Response(envoies_data)
+            return Response(serializer.data)
 
 
 

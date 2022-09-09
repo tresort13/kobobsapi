@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 import random
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 
@@ -297,3 +298,19 @@ def getMonthlyRapportInfo(request,pk):
     if request.method =='GET':
             serializer = Envoies_dataSerializer(envoies_data,many=True)
             return Response(serializer.data)
+        
+@api_view(['GET'])   
+def getUsersInfo(request): 
+    try:
+        envoies_data = User.objects.all()
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='GET':
+            serializer = UserSerializer(envoies_data,many=True)
+            return Response(serializer.data)
+
+
+
+
+

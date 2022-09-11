@@ -309,6 +309,20 @@ def getUsersInfo(request):
     if request.method =='GET':
             serializer = UserSerializer(envoies_data,many=True)
             return Response(serializer.data)
+        
+
+@api_view(['GET'])   
+def suprimer(request,pk): 
+    code_retrait = pk
+    try:
+        envoies_data = Envoies_data.objects.filter(code_retrait=code_retrait)
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='DELETE':
+            envoies_data.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        
 
 
 

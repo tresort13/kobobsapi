@@ -311,7 +311,7 @@ def getUsersInfo(request):
             return Response(serializer.data)
         
 
-@api_view(['GET'])   
+@api_view(['DELETE'])   
 def suprimer(request,pk): 
     code_retrait = pk
     try:

@@ -52,14 +52,11 @@ def welcom(request):
 @api_view(['POST'])   
 def envoieFormulaire(request): 
         nom_expediteur= request.data['nom_expediteur']
-        postnom_expediteur= request.data['postnom_expediteur']
         prenom_expediteur= request.data['prenom_expediteur']
         adresse_expediteur= request.data['adresse_expediteur']
-        email_expediteur= request.data['email_expediteur']
         numero_expediteur = request.data['numero_expediteur']
         pays_expediteur= request.data['pays_expediteur']
         nom_beneficiaire= request.data['nom_beneficiaire']
-        postnom_beneficiaire= request.data['postnom_beneficiaire']
         prenom_beneficiaire= request.data['prenom_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
         montant_beneficiaire= request.data['montant_beneficiaire']
@@ -69,11 +66,11 @@ def envoieFormulaire(request):
         type_service= request.data['type_service']
         numero_transfer = request.data['numero_transfer']
         
-        retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]
+        retrait_donnes1 = [123244562,139430944,118034851,134890346,145860984,123409858,123849384,112435646,154677540,165467383]
         key_one = random.sample(retrait_donnes1,k=1)
         for x in key_one :
             a = int(x)
-        retrait_donnes2 = [13456645,23456732,34985788,12938465,13746783,29384784,12837482,32657386,29837431,12337452,24357891,10236436,32657382]
+        retrait_donnes2 = [113456645,123456732,134985788,112938465,113746783,129384784,112837482,132657386,129837431,112337452,124357891,110236436,132657382]
         key_two = random.sample(retrait_donnes2,k=1)
         for z in key_two :
             b= int(z)
@@ -120,7 +117,7 @@ def envoieFormulaire(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)
@@ -130,14 +127,11 @@ def envoieFormulaire(request):
 @api_view(['POST'])   
 def envoieFormulaireAbonne(request): 
         nom_expediteur= request.data['nom_expediteur']
-        postnom_expediteur= request.data['postnom_expediteur']
         prenom_expediteur= request.data['prenom_expediteur']
         adresse_expediteur= request.data['adresse_expediteur']
-        email_expediteur= request.data['email_expediteur']
         numero_expediteur = request.data['numero_expediteur']
         pays_expediteur= request.data['pays_expediteur']
         nom_beneficiaire= request.data['nom_beneficiaire']
-        postnom_beneficiaire= request.data['postnom_beneficiaire']
         prenom_beneficiaire= request.data['prenom_beneficiaire']
         pays_beneficiaire= request.data['pays_beneficiaire']
         montant_beneficiaire = request.data['montant_beneficiaire']
@@ -149,11 +143,11 @@ def envoieFormulaireAbonne(request):
         numero_transfer = request.data['numero_transfer']
         
         
-        retrait_donnes1 = [23244562,39430944,18034851,34890346,45860984,23409858,23849384,12435646,54677540,65467383]
+        retrait_donnes1 = [123244562,139430944,118034851,134890346,145860984,123409858,123849384,112435646,154677540,165467383]
         key_one = random.sample(retrait_donnes1,k=1)
         for x in key_one :
             a = int(x)
-        retrait_donnes2 = [13456645,23456732,34985788,12938465,13746783,29384784,12837482,32657386,29837431,12337452,24357891,10236436,32657382]
+        retrait_donnes2 = [113456645,123456732,134985788,112938465,113746783,129384784,112837482,132657386,129837431,112337452,124357891,110236436,132657382]
         key_two = random.sample(retrait_donnes2,k=1)
         for z in key_two :
             b= int(z)
@@ -180,7 +174,7 @@ def envoieFormulaireAbonne(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'postnom_expediteur':postnom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur' : email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'postnom_beneficiaire' : postnom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)

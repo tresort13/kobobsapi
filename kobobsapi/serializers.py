@@ -26,7 +26,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class Envoies_dataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Envoies_data
-        fields = ('id', 'nom_expediteur','prenom_expediteur','adresse_expediteur','numero_expediteur','pays_expediteur',
+        fields = ('id', 'nom_expediteur','prenom_expediteur','adresse_expediteur','email_expediteur','numero_expediteur','pays_expediteur',
                   'nom_beneficiaire','prenom_beneficiaire','pays_beneficiaire',
                  'montant_beneficiaire','type_service','frais_envoie','frais_tva','montant_total','code_retrait','data_operation','date_heure_operation','code_abonne','status_retrait','numero_transfer','month_year_operation',
                   'agent_id')

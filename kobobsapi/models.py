@@ -10,6 +10,7 @@ class Envoies_data(models.Model):
     prenom_expediteur = models.CharField(max_length=100,default="")
     adresse_expediteur = models.CharField(max_length=100,default="")
     numero_expediteur = models.CharField(max_length=100,default="")
+    email_expediteur = models.CharField(max_length=100,default="")
     pays_expediteur = models.CharField(max_length=100,default="")
     nom_beneficiaire = models.CharField(max_length=100,default="")
     prenom_beneficiaire = models.CharField(max_length=100,default="")

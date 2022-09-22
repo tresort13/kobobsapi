@@ -320,5 +320,17 @@ def suprimer(request,pk):
 
 
 
-
+@api_view(['GET'])   
+def getCodeRetraitInfo(request,pk,pk2,pk3): 
+    code_abonne = pk
+    montant_beneficiaire = pk2
+    data_operation = pk3
+    try:
+        envoies_data = Envoies_data.objects.filter(code_abonne=code_abonne) & Envoies_data.objects.filter(montant_beneficiaire = montant_beneficiaire) & Envoies_data.objects.filter(data_operation = data_operation) 
+    except envoies_data.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method =='GET':
+            serializer = Envoies_dataSerializer(envoies_data,many=True)
+            return Response(serializer.data)
 

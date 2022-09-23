@@ -118,7 +118,7 @@ def envoieFormulaire(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur':email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur':email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : str(nom_beneficiaire).capitalize(),'prenom_beneficiaire' : str(prenom_beneficiaire).capitalize(),'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_retrait':code_retrait,'code_abonne' : code_abonne,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)
@@ -176,7 +176,7 @@ def envoieFormulaireAbonne(request):
         frais_tva = frais_tva
         
         
-        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur':email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : nom_beneficiaire,'prenom_beneficiaire' : prenom_beneficiaire,'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
+        serializer = Envoies_dataSerializer(data={'nom_expediteur': nom_expediteur,'prenom_expediteur' : prenom_expediteur,'adresse_expediteur' : adresse_expediteur,'email_expediteur':email_expediteur,'numero_expediteur' : numero_expediteur,'pays_expediteur' : pays_expediteur,'nom_beneficiaire' : str(nom_beneficiaire).capitalize(),'prenom_beneficiaire' : str(prenom_beneficiaire).capitalize(),'pays_beneficiaire' : pays_beneficiaire,'montant_beneficiaire':montant_beneficiaire,'type_service' : type_service, 'frais_envoie' : frais_envoie,'frais_tva':frais_tva,'montant_total': montant_total,'code_abonne':code_abonne,'code_retrait':code_retrait,'numero_transfer': numero_transfer,'month_year_operation':str(datetime.now().year)+"-"+"0"+str(datetime.now().month)})
         if serializer.is_valid() :
           serializer.save()
           return Response(serializer.data)
@@ -323,7 +323,7 @@ def suprimer(request,pk):
 @api_view(['GET'])   
 def getCodeRetraitInfo(request,pk,pk2,pk3): 
     code_abonne = pk
-    nom_beneficiaire = pk2
+    nom_beneficiaire = str(pk2).capitalize()
     data_operation = pk3
     try:
         envoies_data = Envoies_data.objects.filter(code_abonne=code_abonne) & Envoies_data.objects.filter(nom_beneficiaire = nom_beneficiaire) & Envoies_data.objects.filter(data_operation = data_operation) 

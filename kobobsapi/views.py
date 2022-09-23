@@ -323,10 +323,10 @@ def suprimer(request,pk):
 @api_view(['GET'])   
 def getCodeRetraitInfo(request,pk,pk2,pk3): 
     code_abonne = pk
-    nom_beneficiaire = str(pk2).capitalize()
+    nom_beneficiaire = pk2
     data_operation = pk3
     try:
-        envoies_data = Envoies_data.objects.filter(code_abonne=code_abonne) & Envoies_data.objects.filter(nom_beneficiaire = nom_beneficiaire) & Envoies_data.objects.filter(data_operation = data_operation) 
+        envoies_data = Envoies_data.objects.filter(code_abonne=code_abonne) & Envoies_data.objects.filter(nom_beneficiaire = str(nom_beneficiaire).capitalize()) & Envoies_data.objects.filter(data_operation = data_operation) 
     except envoies_data.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
         

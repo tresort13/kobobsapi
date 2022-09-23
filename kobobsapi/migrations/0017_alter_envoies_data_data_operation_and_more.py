@@ -10,14 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='envoies_data',
-            name='data_operation',
-            field=models.CharField(default='', max_length=20),
-        ),
-        migrations.AlterField(
-            model_name='envoies_data',
-            name='date_heure_operation',
-            field=models.CharField(default='', max_length=20),
-        ),
+      
     ]

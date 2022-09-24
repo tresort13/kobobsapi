@@ -31,7 +31,7 @@ class LoginAPI(KnoxLoginView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-        return Response({"username" : user.username})
+        return Response({"username" : user.username,"is_superuser" : user.is_superuser})
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
